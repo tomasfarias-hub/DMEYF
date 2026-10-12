@@ -1,0 +1,24 @@
+# Resultados de la corrida de la entrega
+
+Valores tomados de las salidas guardadas en `notebooks/competencia_01_lgbm.ipynb`.
+
+## Evaluación en junio (202106)
+
+El mes tiene 164.114 clientes y 1.098 BAJA+2.
+
+| Modelo | Criterio de corte | Envíos | % cartera | Ganancia |
+|---|---|---|---|---|
+| 1 semilla | probabilidad ≥ 0,025 | 8.770 | 5,34 % | 341,82 M |
+| 1 semilla | óptimo (máximo de la curva) | 11.618 | 7,08 % | 350,40 M |
+| Semillerío de 5 | óptimo (curva suavizada) | 11.933 | 7,27 % | 356,04 M |
+| Semillerío de 5 | máximo crudo | 12.053 | 7,34 % | 359,34 M |
+
+## Entrega (202108)
+
+| Dato | Valor |
+|---|---|
+| Método de corte | `optimo`: misma proporción de cartera que el óptimo suavizado de junio |
+| Clientes en la cartera de agosto | 164.647 |
+| Clientes enviados | **11.972 (7,27 %)** |
+| Probabilidad del último cliente incluido | 0,01685 |
+| Archivo | `modelos/entrega_202108_optimo_11972.csv` (sin encabezado) |
