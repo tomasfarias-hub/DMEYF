@@ -1,0 +1,53 @@
+# Cómo reproducir la entrega
+
+## Entorno
+
+La notebook está escrita para **Google Colab**: monta Google Drive con `google.colab.drive` y descarga el archivo final
+con `google.colab.files`. Esas dos librerías no existen fuera de Colab.
+
+La primera celda instala Optuna. Lightgbm, pandas, scikit-learn, matplotlib y plotly ya vienen en Colab.
+
+## Pasos
+
+1. Subir esta carpeta a Google Drive y colocar el dataset en `data/competencia_01.csv`.
+2. En la segunda celda de la notebook, cambiar `base_path` por la ruta de esa carpeta en el Drive propio
+   (la notebook trae la ruta del autor):
+
+   ```python
+   base_path = '/content/drive/MyDrive/DMEyF/2026/notebooks/'
+   ```
+
+   Debe terminar en `/`, y adentro tienen que estar `data/` y `modelos/`. La carpeta `db/` se crea sola.
+3. Ejecutar las celdas en orden.
+
+## Optimización: ya resuelta
+
+La notebook trae el interruptor `USAR_PARAMS_FIJOS = True`. Con ese valor:
+
+- No se ejecuta Optuna: la celda `study.optimize` queda desactivada.
+- El modelo se entrena con los hiperparámetros de la entrega (`PARAMS_OPTIMOS` y `BEST_ITER = 418`).
+
+Así se obtiene el mismo modelo sin necesidad del archivo `.db` de Optuna.
+
+Si se pone `USAR_PARAMS_FIJOS = False`, se corre la optimización de cero. En ese caso:
+
+- El sampler de Optuna no tiene semilla, así que los trials no coinciden con los de la entrega.
+- Cada ejecución de `study.optimize(objective, n_trials=15)` suma 15 trials al estudio guardado en `db/`, y el mejor trial puede cambiar.
+
+## Semillas
+
+`semilla = 2323`. De ella salen las 50 semillas (`semillas`) usadas en la validación y en el semillerío.
+Con los mismos datos, hiperparámetros y versiones de librerías el resultado debería coincidir.
+Pueden aparecer diferencias mínimas según la versión de LightGBM o la cantidad de hilos.
+
+## Versiones
+
+Completar con las versiones usadas en Colab (`pip list | grep -iE "lightgbm|optuna|pandas|numpy|scikit-learn"`):
+
+```
+lightgbm=
+optuna=
+pandas=
+numpy=
+scikit-learn=
+```
