@@ -1,0 +1,13 @@
+# dataset original (pesado, de la cátedra)
+data/*
+!data/README.md
+
+# base de Optuna generada al correr la notebook
+db/
+
+# python / jupyter
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
