@@ -1,0 +1,9 @@
+# Datos
+
+Colocar acá el dataset original de la competencia:
+
+```
+data/competencia_01.csv
+```
+
+El archivo no se sube al repositorio (ver `.gitignore`).
